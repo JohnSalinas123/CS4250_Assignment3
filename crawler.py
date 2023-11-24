@@ -38,9 +38,10 @@ def extract_links(html, base_url):
     return abs_links
 
 # mongodb funcs
-def storePage(url):
+def storePage(url, html):
     newVisitedPage = {
         "url" : url,
+        "html_content" : html
     }
     pages_col.insert_one(newVisitedPage)
     
@@ -63,12 +64,13 @@ def web_crawler(frontier):
         print("Crawling: " + cur_url)
         cur_html = fetch_page(cur_url)
         
-        storePage(cur_url)
+        storePage(cur_url,cur_html)
         
         if checkForTarget(cur_html):
             print("TARGET FOUND")
             print("URL of target: " + cur_url)
             print(cur_url == target_url)
+            print(cur_html)
             frontier.clear()
         else:
             for link in extract_links(cur_html, seed_url):
@@ -84,3 +86,5 @@ frontier = deque()
 frontier.append(seed_url)
 
 web_crawler(frontier)
+
+pages_col.find({"url":})
