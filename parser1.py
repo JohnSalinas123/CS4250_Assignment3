@@ -52,9 +52,6 @@ def parse_faculty(html):
         else:
             continue
 
-        
-        
-
         new_prof = {
             "name" : faculty_name,
             "title" : faculty_title,

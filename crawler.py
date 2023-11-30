@@ -86,5 +86,3 @@ frontier = deque()
 frontier.append(seed_url)
 
 web_crawler(frontier)
-
-pages_col.find({"url":})
