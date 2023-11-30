@@ -1,8 +1,6 @@
 
 from collections import deque
-import string
 import urllib.request
-import re
 from pymongo import MongoClient
 from bs4 import BeautifulSoup
 
@@ -69,8 +67,8 @@ def web_crawler(frontier):
         if checkForTarget(cur_html):
             print("TARGET FOUND")
             print("URL of target: " + cur_url)
-            print(cur_url == target_url)
-            print(cur_html)
+            #print(cur_url == target_url)
+            #print(cur_html)
             frontier.clear()
         else:
             for link in extract_links(cur_html, seed_url):
